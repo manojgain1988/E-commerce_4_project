@@ -20,12 +20,13 @@
                     <div class="product-active owl-carousel">
 
                         {% for latest_product in latest_products %}
+
                         <div class="col-lg-12">
                             <!-- single-product-wrap start -->
                             <div class="single-product-wrap">
                                 <div class="product-image">
-                                    <a href="single-product.html">
-                                        <img src="{{latest_product.image.url}}" style="height:150px; width: 170px;" alt="Li's Product Image">
+                                    <a href="{% url 'product_signle' id=latest_product.id %}">
+                                        <img src="{{latest_product.ImageUrl}}" style="height:150px; width: 170px;" alt="Li's Product Image">
                                     </a>
                                     <span class="sticker">New</span>
                                 </div>
@@ -45,7 +46,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <h4><a class="product_name" href="single-product.html">{{latest_product.title}}</a></h4>
+                                        <h4><a class="product_name" href="{% url 'product_signle' id=latest_product.id %}">{{latest_product.title}}</a></h4>
                                         <div class="price-box">
                                             <span class="new-price text-danger">$ {{latest_product.new_price}}</span>
                                             <span class="old-price text-info">$ {{latest_product.old_price}}</span>
@@ -340,7 +341,7 @@
                             <!-- single-product-wrap start -->
                             <div class="single-product-wrap">
                                 <div class="product-image">
-                                    <a href="single-product.html">
+                                    <a href="{% url 'product_signle' id=featured_product.id %}">
                                         <img src="{{featured_product.ImageUrl}}" style="height:150px;width:180px" alt="Li's Product Image">
                                     </a>
                                     <span class="sticker">{{featured_product.amount}}</span>
@@ -361,7 +362,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <h4><a class="product_name" href="single-product.html">{{featured_product.title}}</a></h4>
+                                        <h4><a class="product_name" href="{% url 'product_signle' id=featured_product.id %}">{{featured_product.title}}</a></h4>
                                         <div class="price-box">
                                             <span class="new-price text-danger">$ {{featured_product.new_price}}</span>
                                             <span class="old-price text-info">$ {{featured_product.old_price}}</span>
@@ -386,6 +387,9 @@
     </div>
 </div>
 <!-- Product Area End Here -->
+
+
+
 
 <!-- Begin Li's Static Banner Area -->
 <div class="li-static-banner">

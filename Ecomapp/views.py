@@ -17,3 +17,13 @@ def Index(request):
         'featured_products':featured_products,
     }
     return render(request,'home.html',context)  
+
+
+def product_signle(request,id):
+    setting = Setting.objects.get(id=1)
+    product_signle = Product.objects.get(id=id)
+    context = {
+        'setting':setting,
+        'product_signle':product_signle,
+    }
+    return render(request,'product-single.html',context)

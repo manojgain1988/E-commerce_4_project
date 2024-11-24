@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.safestring import mark_safe
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -54,6 +55,9 @@ class Product(models.Model):
         else:
             return ""
 
+    def get_absolute_url(self):
+        return reverse("product_element", kwargs={"slug": self.slug})
+    
 
     def image_tag(self):
         return mark_safe('<img src="{}" heights="70" width="60" />'.format(self.image.url))

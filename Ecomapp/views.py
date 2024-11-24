@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from Ecomapp.models import Setting
-from Products.models import Product
+from Products.models import Product,Images
 
 # Create your views here.
 
@@ -21,9 +21,13 @@ def Index(request):
 
 def product_signle(request,id):
     setting = Setting.objects.get(id=1)
-    product_signle = Product.objects.get(id=id)
+    single_product = Product.objects.get(id=id)
+    images = Images.objects.filter(product_id=id)
+    products = Product.objects.all().order_by('id')[:4]
     context = {
-        'setting':setting,
-        'product_signle':product_signle,
+        'setting': setting,
+        'single_product': single_product,
+        'images': images,
+        'products': products,
     }
     return render(request,'product-single.html',context)

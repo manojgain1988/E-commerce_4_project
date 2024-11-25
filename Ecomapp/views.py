@@ -1,16 +1,18 @@
 from django.shortcuts import render
 from Ecomapp.models import Setting
-from Products.models import Product,Images
+from Products.models import *
 
 # Create your views here.
 
 def Index(request):
+    categorys = Category.objects.all()
     setting = Setting.objects.get(id=1)
     sliding_images = Product.objects.all().order_by('id')[:4]
     latest_products = Product.objects.all().order_by('-id')
     featured_products = Product.objects.all()
     
     context={
+        'categorys': categorys,
         'setting': setting,
         'sliding_images': sliding_images,
         'latest_products': latest_products,
